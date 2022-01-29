@@ -402,6 +402,11 @@ main .site-content{
     grid-template-columns: 70% 30%;
 }
 
+main .article-content{
+    display: grid;
+    grid-template-columns: 100% 0%;
+}
+
 main .post-content{
     width: 100%;
 
