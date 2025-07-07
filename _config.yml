@@ -1,0 +1,21 @@
+title: "Your Name"
+description: "Product Management | Data Science | Sustainability"
+baseurl: "" 
+url: "https://yourusername.github.io"
+theme: "mmistakes/minimal-mistakes"
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-remote-theme
+
+author:
+  name: "Your Name"
+  avatar: "/images/avatar.jpg"
+  bio: "Cornell Information Science student passionate about product management and sustainability."
+
+# Optional social links
+social:
+  github: yourusername
+  linkedin: yourlinkedin
+
