@@ -3,31 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects | Your Name</title>
+  <title>Projects | Aydan Gerber</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
+
 <body>
   <header>
-    <h1>Projects</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
+    <nav class="navbar">
+      <div class="nav-left">
+        <img src="images/headshot.png" alt="headshot" class="logo">
+      </div>
+
+      <div class="nav-center desktop">
+        <a href="index.html">Home</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="Aydan_Gerber_Resume.pdf" target="_blank">Resume</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        &#9776;
+      </button>
+
+      <div class="nav-right">
+        <a href="https://www.instagram.com/aydangerber" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://github.com/AydanJG" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/aydan-gerber" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
     </nav>
+
+    <div class="nav-center-mobile">
+      <a href="index.html">Home</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="Aydan_Gerber_Resume.pdf" target="_blank">Resume</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </header>
+
   <main>
-    <section>
-      <h2>FinSight AI Chatbot</h2>
-      <p>Developed a fintech chatbot leveraging Retrieval-Augmented Generation to deliver accurate financial insights with 90% precision.</p>
-      <h2>Sustainability Twitter Analysis</h2>
-      <p>Published research applying topic modeling to analyze environmental discourse on social media platforms.</p>
-      <h2>Cross-Platform Tennis App</h2>
-      <p>Created an app for client enrollment and strategy coaching using Flutter and Firebase.</p>
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>
+          My <span class="highlight">Projects.</span>
+        </h1>
+        <p>
+          Here are some of the projects I've built, showcasing my passion for <b>data science</b>, <b>software development</b>, and <b>sustainability</b>.
+        </p>
+      </div>
+      <div class="hero-illustration">
+        <img src="images/memoji-idea.png" alt="Illustration of person working on laptop">
+      </div>
     </section>
+
+    <section class="projects-section">
+        <h2>Selected Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>Twitter Sustainability Analysis</h3>
+            <p>
+                Conducted a comprehensive content analysis of Twitter data to uncover trends in environmental conversations using NLP techniques.
+            </p>
+            <p><b>Published by Cambridge University Press</b></p>
+            <a target="_blank" href="https://www.cambridge.org/core/journals/environmental-data-science/article/content-analysis-analyzing-topics-of-conversation-under-the-sustainability-hashtag-on-twitter/4AF7FAA1DFAC4FDE45F297017C06B731?utm_campaign=shareaholic&utm_medium=copy_link&utm_source=bookmark" class="project-link">View Details</a>
+          </div>
+          <div class="project-card">
+            <h3>Reddit Based ETF Reccomender</h3>
+            <p>
+                Python-based application to help identify sudden surges in public interest across any topic—from clean energy and artificial intelligence to consumer trends—and instantly recommend relevant ETFs aligned with those trends.
+            </p>
+            <a target="_blank" href="https://github.com/AydanJG/reddit-etf-analysis" class="project-link">View Details</a>
+          </div>
+          <div class="project-card">
+            <h3>Twitter Sustainability Dataset</h3>
+            <p>
+              Created and published a dataset capturing over 5,000 tweets using the #sustainability hashtag to analyze public discourse on environmental topics. Collected metadata and text data via the Twitter API, and performed preprocessing for topic modeling and sentiment analysis. This dataset supported my published study exploring trends in sustainability communication on social media.
+            </p>
+            <a href="https://github.com/AydanJG/A-Content-Analysis-Analyzing-Topics-of-Conversation-under-the-Sustainability-Hashtag-on-Twitter-" target="_blank" class="project-link">View Details</a>
+          </div>          
+          <div class="project-card">
+            <h3>Personal Portfolio</h3>
+            <p>
+              Designed and coded this website to showcase my work, combining clean design with responsive layouts.
+            </p>
+            <a href="#" class="project-link">View Details</a>
+          </div>
+        </div>
+      </section>
+      
   </main>
-  <footer>
-    <p>&copy; 2025 Your Name</p>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <p class="footer-text">Let's get in touch!</p>
+      <div class="footer-links">
+        <a href="https://mail.google.com/mail/?view=cm&to=ajg359@cornell.edu" target="_blank" aria-label="Email">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Email Icon" class="footer-icon">
+        </a>
+        <a href="https://www.linkedin.com/in/aydan-gerber" target="_blank" aria-label="LinkedIn">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn Icon" class="footer-icon">
+        </a>
+      </div>
+    </div>
+    <p>&copy; 2025 Aydan Gerber</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
