@@ -195,6 +195,8 @@ body {
     text-decoration: none;
     border-radius: 4px;
     transition: background 0.3s ease;
+    border: none;
+    outline: none;
   }
   
   .btn-primary:hover {
@@ -380,7 +382,6 @@ body {
   .contact-info {
     background: #fff;
     padding: 2rem;
-    border: 1px solid #eee;
     border-radius: 8px;
   }
   
@@ -406,7 +407,6 @@ body {
   .contact-form {
     background: #fff;
     padding: 2rem;
-    border: 1px solid #eee;
     border-radius: 8px;
   }
   
