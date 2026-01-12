@@ -65,11 +65,87 @@
       </div>
     </section>
 
+    <section class="featured-project-section">
+      <div class="featured-project">
+        <div class="featured-project-header">
+          <p class="featured-eyebrow">Featured Project</p>
+          <h2>LiveDance</h2>
+          <p class="featured-subtitle">
+            Computer vision-powered dance training with real-time pose feedback, alignment scoring, and movement coaching.
+          </p>
+        </div>
+        <div class="featured-project-body">
+          <div class="featured-project-details">
+            <p class="featured-lead">
+              LiveDance tracks a dancer from a live camera feed, compares their pose to a reference performance, and delivers
+              corrective feedback on posture, timing, and alignment for faster skill progression.
+            </p>
+            <div class="featured-tags">
+              <span>Computer Vision</span>
+              <span>MoveNet + BlazePose</span>
+              <span>MediaPipe</span>
+              <span>React</span>
+              <span>Python</span>
+            </div>
+            <div class="featured-columns">
+              <div class="featured-block">
+                <h3>What it does</h3>
+                <ul>
+                  <li>Captures pose landmarks from a live camera feed.</li>
+                  <li>Aligns movement sequences to a reference routine.</li>
+                  <li>Highlights corrective cues for posture and timing.</li>
+                </ul>
+              </div>
+              <div class="featured-block">
+                <h3>Architecture</h3>
+                <ul>
+                  <li><b>Frontend (React):</b> camera capture, UI, and visual overlays.</li>
+                  <li><b>Backend (Python):</b> MediaPipe processing and ML inference.</li>
+                  <li><b>Communication:</b> REST API over localhost.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="featured-metrics">
+              <div class="featured-metric">
+                <p class="metric-value">Stable skeletal rigging</p>
+                <p class="metric-label">Smoothed pose estimation</p>
+              </div>
+              <div class="featured-metric">
+                <p class="metric-value">Real-time feedback</p>
+                <p class="metric-label">Posture, timing, alignment</p>
+              </div>
+              <div class="featured-metric">
+                <p class="metric-value">MVC architecture</p>
+                <p class="metric-label">Clear separation of concerns</p>
+              </div>
+            </div>
+            <p class="featured-resume">
+              Developed LiveDance, integrating MoveNet and BlazePose with stable skeletal rigging to deliver corrective
+              feedback that improved user learning beyond existing scoring tools. Primarily worked on the pose extraction
+              pipeline powering the real-time feedback loop.
+            </p>
+            <div class="featured-actions">
+              <a class="btn-primary" href="https://github.com/CornellDataScience/LiveDance/tree/main" target="_blank">GitHub Repo</a>
+            </div>
+          </div>
+          <div class="featured-project-media">
+            <div class="featured-video-frame">
+              <video controls playsinline src="videos/LiveDanceDemo.mp4"></video>
+            </div>
+            <div class="featured-callout">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              Real-time corrective feedback while you dance.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="projects-section">
         <h2>Selected Projects</h2>
         <div class="projects-grid">
           <div class="project-card">
-            <h3>Twitter Sustainability Analysis</h3>
+            <h3>Publication: Analyzing Sustainability on Twitter using LDA</h3>
             <p>
                 Conducted a comprehensive content analysis of Twitter data to uncover trends in environmental conversations using NLP techniques.
             </p>
@@ -81,7 +157,6 @@
             <p>
               Work-in-progress collaboration with Cornell Data Science to build LiveDance, a computer vision project focused on real-time dance performance analysis.
             </p>
-            <p><b>Status:</b> WIP</p>
             <a target="_blank" href="https://github.com/CornellDataScience/LiveDance/tree/main" class="project-link">View Details</a>
           </div>
           <div class="project-card">
