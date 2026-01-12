@@ -470,6 +470,9 @@ body {
     padding: 0.75rem;
     border: 1px solid rgba(167, 139, 250, 0.25);
     box-shadow: 0 14px 26px rgba(76, 29, 149, 0.12);
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
   }
 
   .featured-video-frame video {
@@ -479,10 +482,11 @@ body {
   }
 
   .featured-video-frame iframe {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    height: 100%;
     border: 0;
-    border-radius: 12px;
     display: block;
   }
 
