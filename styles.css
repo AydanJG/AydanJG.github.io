@@ -454,8 +454,8 @@ body {
 .rekkie-media-item.rekkie-phone {
   position: relative;
   margin: 0 auto;
-  width: 82%;
-  max-width: 440px;
+  width: min(360px, 100%);
+  max-width: 360px;
 }
 
 .concept-label {
