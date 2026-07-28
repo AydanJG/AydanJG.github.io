@@ -89,16 +89,25 @@ body {
   .nav-right a {
     margin-left: 1em;
     text-decoration: none;
-    font-size: 1.2em;
     color: #334155;
     transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
   }
-  
+
   /* Hover effect for icons */
   .nav-right a:hover {
     color: #0f172a;
   }
-  
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+
 
 
 /* Hamburger button */
@@ -496,6 +505,11 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.featured-callout .icon {
+  width: 18px;
+  height: 18px;
 }
 
 @media (max-width: 980px) {
