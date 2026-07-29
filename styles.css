@@ -844,6 +844,9 @@ textarea:focus-visible {
   position: relative;
   overflow: hidden;
   background: var(--surface);
+  /* Needed so a per-theme --text override reaches elements that don't set
+     colour themselves (e.g. the Nitch status panel's values). */
+  color: var(--text);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: clamp(1.5rem, 3.5vw, 2.6rem);
@@ -863,9 +866,6 @@ textarea:focus-visible {
   pointer-events: none;
 }
 
-.featured-project.alt::after {
-  background: radial-gradient(circle, oklch(0.58 0.160 var(--hue-alt) / 0.16), transparent 68%);
-}
 
 .featured-project > * {
   position: relative;
@@ -1157,6 +1157,105 @@ textarea:focus-visible {
   .featured-project-body {
     grid-template-columns: 1fr;
   }
+}
+/* #endregion */
+
+
+/* #region Featured project themes
+   Each card carries its product's palette. Because the card internals are all
+   token-driven, scoping the tokens re-themes headings, tags, metrics, buttons,
+   callouts and the pipeline diagram in one go. */
+
+/* SS&C Technologies — enterprise blue (#0077C8, from their own logo asset).
+   The accent is darkened for text use; the true brand blue is only ~3.9:1 on
+   white, short of AA at body sizes. */
+.featured-project.theme-ssc {
+  --accent: #0062a3;
+  --accent-alt: #0077c8;
+  --accent-soft: rgba(0, 119, 200, 0.10);
+  --on-accent: #ffffff;
+  --border: rgba(0, 119, 200, 0.16);
+  --border-strong: rgba(0, 119, 200, 0.28);
+  --surface-2: rgba(0, 119, 200, 0.045);
+  background: linear-gradient(158deg, #ffffff, #f3f9fd);
+}
+
+.featured-project.theme-ssc::after {
+  background: radial-gradient(circle, rgba(0, 119, 200, 0.16), transparent 68%);
+}
+
+:root[data-theme='dark'] .featured-project.theme-ssc {
+  --accent: #57ade4;
+  --accent-alt: #0077c8;
+  --accent-soft: rgba(0, 119, 200, 0.20);
+  --on-accent: #04121c;
+  --border: rgba(87, 173, 228, 0.18);
+  --border-strong: rgba(87, 173, 228, 0.30);
+  --surface-2: rgba(0, 119, 200, 0.10);
+  background: linear-gradient(158deg, #16202a, #111a22);
+}
+
+/* Nitch — the product's own system: espresso surfaces, amber accent, cream
+   text, taken from the Nitch Design tokens. Stays dark in both site themes,
+   because that is the brand. */
+.featured-project.theme-nitch {
+  --accent: #e07a3c;
+  --accent-alt: #c96a30;
+  --accent-soft: rgba(224, 122, 60, 0.16);
+  --on-accent: #1a1208;
+  --surface: #1a1208;
+  --surface-2: #261c0d;
+  --border: rgba(240, 234, 224, 0.08);
+  --border-strong: rgba(240, 234, 224, 0.16);
+  --text: #f0eae0;
+  --text-muted: #a89c90;
+  /* Nitch's own --muted (#5A5248) is only 2.4:1 on espresso, so the secondary
+     tone carries the faintest text here instead. */
+  --text-faint: #8a8078;
+  background: linear-gradient(158deg, #1f1509, #161006);
+  border-color: rgba(240, 234, 224, 0.10);
+}
+
+.featured-project.theme-nitch::after {
+  background: radial-gradient(circle, rgba(224, 122, 60, 0.22), transparent 68%);
+}
+
+.featured-project.theme-nitch .featured-project-header h2,
+.featured-project.theme-nitch .featured-lead {
+  color: #f0eae0;
+}
+
+.featured-project.theme-nitch .status-chip.chip-review {
+  border-color: rgba(224, 122, 60, 0.55);
+  background: rgba(224, 122, 60, 0.16);
+  color: #e8975f;
+}
+
+/* LiveDance — Cornell Data Science, carnelian. */
+.featured-project.theme-livedance {
+  --accent: #a81b1b;
+  --accent-alt: #d13636;
+  --accent-soft: rgba(179, 27, 27, 0.09);
+  --on-accent: #ffffff;
+  --border: rgba(179, 27, 27, 0.16);
+  --border-strong: rgba(179, 27, 27, 0.28);
+  --surface-2: rgba(179, 27, 27, 0.045);
+  background: linear-gradient(158deg, #ffffff, #fdf5f4);
+}
+
+.featured-project.theme-livedance::after {
+  background: radial-gradient(circle, rgba(179, 27, 27, 0.15), transparent 68%);
+}
+
+:root[data-theme='dark'] .featured-project.theme-livedance {
+  --accent: #f08585;
+  --accent-alt: #c53030;
+  --accent-soft: rgba(214, 70, 70, 0.20);
+  --on-accent: #1a0808;
+  --border: rgba(240, 133, 133, 0.18);
+  --border-strong: rgba(240, 133, 133, 0.30);
+  --surface-2: rgba(214, 70, 70, 0.10);
+  background: linear-gradient(158deg, #241618, #1b1113);
 }
 /* #endregion */
 
