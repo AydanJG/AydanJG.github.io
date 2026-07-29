@@ -613,9 +613,6 @@ textarea:focus-visible {
   margin-bottom: 1.5rem;
 }
 
-#focus .section-header p {
-  max-width: none;
-}
 
 /* Shorter windows: tighten further so the grid still clears the fold. */
 @media (max-height: 870px) {
