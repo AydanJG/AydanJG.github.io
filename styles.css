@@ -19,7 +19,7 @@
   --step-1: clamp(1.20rem, 1.12rem + 0.40vw, 1.45rem);
   --step-2: clamp(1.50rem, 1.34rem + 0.78vw, 2.05rem);
   --step-3: clamp(1.90rem, 1.60rem + 1.45vw, 2.90rem);
-  --step-4: clamp(2.05rem, 1.60rem + 2.05vw, 3.20rem);
+  --step-4: clamp(2.6rem, 2.05rem + 2.5vw, 4.25rem);
 
   --radius-sm: 10px;
   --radius-md: 16px;
@@ -563,7 +563,6 @@ textarea:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-bottom: 1.6rem;
 }
 
 /* Live status pill */
@@ -602,31 +601,6 @@ textarea:focus-visible {
   100% { box-shadow: 0 0 0 0 oklch(0.72 0.19 155 / 0); }
 }
 
-/* Proof metrics strip — the 8-second scan payload */
-.hero-metrics {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 2.25rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--border);
-}
-
-.hero-metric {
-  padding-block: 0.3rem;
-}
-
-.hero-metric dt {
-  font-size: var(--step--1);
-  color: var(--text-faint);
-  margin: 0 0 0.15rem;
-}
-
-.hero-metric dd {
-  margin: 0;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
 .hero-illustration {
   justify-self: center;
 }
@@ -661,10 +635,6 @@ textarea:focus-visible {
 
   .hero-actions {
     margin-bottom: 1.1rem;
-  }
-
-  .hero-metrics {
-    padding-top: 0.9rem;
   }
 }
 /* #endregion */
