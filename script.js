@@ -118,6 +118,70 @@ if (!supportsScrollTimeline && !reducedMotion.matches && 'IntersectionObserver' 
 }
 // #endregion
 
+// #region Nitch phone screenshot rotator
+const phone = document.getElementById('nitchPhone');
+const phoneDotsWrap = document.getElementById('nitchDots');
+
+if (phone && phoneDotsWrap) {
+  const shots = Array.from(phone.querySelectorAll('.phone-shot'));
+  const dots = Array.from(phoneDotsWrap.querySelectorAll('.phone-dot'));
+  const INTERVAL = 3200;
+  let index = 0;
+  let timer = null;
+
+  const show = next => {
+    index = (next + shots.length) % shots.length;
+    shots.forEach((shot, i) => shot.classList.toggle('is-active', i === index));
+    dots.forEach((dot, i) => {
+      const active = i === index;
+      dot.classList.toggle('is-active', active);
+      if (active) {
+        dot.setAttribute('aria-current', 'true');
+      } else {
+        dot.removeAttribute('aria-current');
+      }
+    });
+  };
+
+  const stop = () => {
+    clearInterval(timer);
+    timer = null;
+  };
+
+  const start = () => {
+    // Honour reduced motion by leaving the first screenshot up; the dots still
+    // work, so the content stays reachable without anything auto-animating.
+    if (reducedMotion.matches || timer) return;
+    timer = setInterval(() => show(index + 1), INTERVAL);
+  };
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      stop();
+      show(i);
+      start();
+    });
+  });
+
+  // WCAG 2.2.2: auto-updating content needs a way to pause it.
+  const region = phone.parentElement;
+  region.addEventListener('pointerenter', stop);
+  region.addEventListener('pointerleave', start);
+  region.addEventListener('focusin', stop);
+  region.addEventListener('focusout', start);
+
+  // Don't burn cycles animating a card that isn't on screen.
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(
+      entries => entries.forEach(entry => (entry.isIntersecting ? start() : stop())),
+      { threshold: 0.2 }
+    ).observe(phone);
+  } else {
+    start();
+  }
+}
+// #endregion
+
 // #region Contact form
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
