@@ -1231,31 +1231,31 @@ textarea:focus-visible {
   color: #e8975f;
 }
 
-/* LiveDance — Cornell Data Science, carnelian. */
+/* LiveDance — violet on white. */
 .featured-project.theme-livedance {
-  --accent: #a81b1b;
-  --accent-alt: #d13636;
-  --accent-soft: rgba(179, 27, 27, 0.09);
+  --accent: #6d28d9;
+  --accent-alt: #8b5cf6;
+  --accent-soft: rgba(109, 40, 217, 0.08);
   --on-accent: #ffffff;
-  --border: rgba(179, 27, 27, 0.16);
-  --border-strong: rgba(179, 27, 27, 0.28);
-  --surface-2: rgba(179, 27, 27, 0.045);
-  background: linear-gradient(158deg, #ffffff, #fdf5f4);
+  --border: rgba(109, 40, 217, 0.15);
+  --border-strong: rgba(109, 40, 217, 0.26);
+  --surface-2: rgba(109, 40, 217, 0.04);
+  background: linear-gradient(158deg, #ffffff, #fbf9ff);
 }
 
 .featured-project.theme-livedance::after {
-  background: radial-gradient(circle, rgba(179, 27, 27, 0.15), transparent 68%);
+  background: radial-gradient(circle, rgba(109, 40, 217, 0.14), transparent 68%);
 }
 
 :root[data-theme='dark'] .featured-project.theme-livedance {
-  --accent: #f08585;
-  --accent-alt: #c53030;
-  --accent-soft: rgba(214, 70, 70, 0.20);
-  --on-accent: #1a0808;
-  --border: rgba(240, 133, 133, 0.18);
-  --border-strong: rgba(240, 133, 133, 0.30);
-  --surface-2: rgba(214, 70, 70, 0.10);
-  background: linear-gradient(158deg, #241618, #1b1113);
+  --accent: #b49bff;
+  --accent-alt: #8b5cf6;
+  --accent-soft: rgba(139, 92, 246, 0.20);
+  --on-accent: #141020;
+  --border: rgba(180, 155, 255, 0.18);
+  --border-strong: rgba(180, 155, 255, 0.30);
+  --surface-2: rgba(139, 92, 246, 0.10);
+  background: linear-gradient(158deg, #1f1a2e, #191426);
 }
 /* #endregion */
 
