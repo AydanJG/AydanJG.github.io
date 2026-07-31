@@ -196,7 +196,7 @@
           </div>
           <p class="featured-subtitle">
             An internal, source-grounded assistant that answers fund-accounting and operations questions for
-            onboarding staff — built to cut new-hire ramp time and reduce interruptions to senior staff.
+            onboarding staff, built to cut new-hire ramp time and reduce interruptions to senior staff.
           </p>
         </div>
 
@@ -204,7 +204,7 @@
           <div class="featured-project-details">
             <p class="featured-lead">
               A retrieval-augmented assistant grounded in curated internal training material. It cites its sources,
-              and when grounding is weak it says so rather than filling the gap — the interesting engineering was
+              and when grounding is weak it says so rather than filling the gap. The interesting engineering was
               in making that judgement reliable. Built by a four-person intern team over roughly twelve weeks.
             </p>
 
@@ -234,7 +234,7 @@
               <div class="featured-block">
                 <h3>Grounding &amp; governance</h3>
                 <ul>
-                  <li>Three-way classification — grounded, marginal, or refused — before any answer returns. Marginal answers still cite, under a header that forbids filling gaps.</li>
+                  <li>Three-way classification (grounded, marginal, or refused) before any answer returns. Marginal answers still cite, under a header that forbids filling gaps.</li>
                   <li>Absolute sigmoid scaling on cosine plus a saturation cap on BM25, so thresholds stop drifting as the corpus grows.</li>
                   <li>Retrieved passage text is structurally excluded from every export path. There is no flag to include it.</li>
                   <li>All model traffic routed through a governed internal gateway with full governance headers.</li>
@@ -310,13 +310,13 @@
                 <p class="arch-tier-label">Model access</p>
                 <div class="arch-node is-accent">
                   <b>Governed LLM gateway</b>
-                  <span>Sole egress — passage text never leaves</span>
+                  <span>Sole egress. Passage text never leaves</span>
                 </div>
               </div>
             </figure>
             <div class="featured-callout">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-              Grounded answers only — it refuses rather than fabricates.
+              Grounded answers only. It refuses rather than fabricates.
             </div>
           </div>
         </div>
@@ -332,18 +332,19 @@
             <span class="status-chip chip-review">In App Store review</span>
           </div>
           <p class="featured-subtitle">
-            A social app for rating, ranking, and sharing real-world experiences — think Beli, but for everything
-            you actually go out and do.
+            A social app for logging the places you go, rating them out of ten, and seeing what the people
+            you trust rated nearby.
           </p>
         </div>
 
         <div class="featured-project-body">
           <div class="featured-project-details">
             <p class="featured-lead">
-              Nitch turns the things you do — restaurants, shows, trips, nights out — into a ranked, shareable
-              record. Instead of star ratings that flatten everything into a 4.2, it uses head-to-head comparison
-              to build a personal ordering, then surfaces recommendations from the people whose taste you
-              actually trust.
+              You log what you did: a place, a category, a rating out of ten, notes and photos. Those logs build
+              a taste profile scored per category, weighting how often you actually go alongside how highly you
+              rate it, so one enthusiastic night out doesn't outrank somewhere you keep returning to. Nitch reads
+              that profile two ways: what the people you trust rated well near you, and which categories you love
+              have gone quiet.
             </p>
 
             <div class="featured-tags">
@@ -360,16 +361,16 @@
                 <h3>What I'm building</h3>
                 <ul>
                   <li>Cross-platform mobile client in React Native and Expo, written in strict TypeScript.</li>
-                  <li>Comparison-based ranking rather than flat star ratings.</li>
-                  <li>Social graph and feed so recommendations come from people you know.</li>
-                  <li>Supabase backend with row-level security on every table.</li>
+                  <li>A per-category taste profile built from your own ratings, log-damped so how often you go counts as well as how highly you rate it.</li>
+                  <li>Suggestions driven by activity gaps and an ageing want-to list, so a prompt names something specific rather than nudging you to open the app.</li>
+                  <li>Keyset-paginated feed on a Supabase backend, scoped by row-level security to your own logs and accepted friends&rsquo;.</li>
                 </ul>
               </div>
               <div class="featured-block">
                 <h3>Where it stands</h3>
                 <ul>
                   <li>Currently in Apple App Store review.</li>
-                  <li>Invite-only — not yet publicly launched or downloadable.</li>
+                  <li>Invite-only. Not yet publicly launched or downloadable.</li>
                   <li>Private codebase, so there's no public repo to link.</li>
                   <li>Actively in development ahead of a wider release.</li>
                 </ul>
@@ -383,7 +384,7 @@
               </a>
             </div>
             <p class="featured-note">
-              Nitch is a private codebase, unlike the open-source projects below — happy to walk through the
+              Nitch is a private codebase, unlike the open-source projects below. Happy to walk through the
               architecture on request.
             </p>
           </div>
@@ -416,7 +417,7 @@
 
             <div class="featured-callout">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
-              Not yet publicly available — launching after review.
+              Not yet publicly available. Launching after review.
             </div>
           </div>
         </div>
