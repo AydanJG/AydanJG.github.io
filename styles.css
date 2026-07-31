@@ -57,7 +57,6 @@
   --shadow-sm: 0 2px 8px oklch(0.24 0.04 var(--hue) / 0.06);
   --shadow-md: 0 12px 28px oklch(0.24 0.04 var(--hue) / 0.09);
   --shadow-lg: 0 26px 60px oklch(0.24 0.04 var(--hue) / 0.13);
-  --glow: 0 14px 34px oklch(0.52 0.215 var(--hue) / 0.28);
 
   --grain-opacity: 0.030;
 }
@@ -86,7 +85,6 @@
   --shadow-sm: 0 2px 8px oklch(0 0 0 / 0.30);
   --shadow-md: 0 12px 28px oklch(0 0 0 / 0.40);
   --shadow-lg: 0 26px 60px oklch(0 0 0 / 0.50);
-  --glow: 0 14px 34px oklch(0.735 0.165 var(--hue) / 0.30);
 
   --grain-opacity: 0.045;
 }
@@ -482,12 +480,15 @@ textarea:focus-visible {
 .btn-primary {
   background: linear-gradient(135deg, var(--accent), var(--accent-alt));
   color: var(--on-accent);
-  box-shadow: var(--glow);
+  /* Inlined rather than a --glow token: a token declared on :root has its
+     var(--accent) substituted at :root, so themed cards inherited the root
+     accent's colour. Resolving it here picks up the card's accent. */
+  box-shadow: 0 14px 34px color-mix(in oklch, var(--accent) 28%, transparent);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 20px 40px oklch(0.52 0.215 var(--hue) / 0.35);
+  box-shadow: 0 20px 40px color-mix(in oklch, var(--accent) 38%, transparent);
 }
 
 .btn-ghost {
@@ -1115,42 +1116,6 @@ textarea:focus-visible {
   background: var(--accent-soft);
   color: var(--accent);
   font-weight: 600;
-}
-
-/* Nitch status panel */
-.status-panel {
-  display: grid;
-  gap: 0.75rem;
-  padding: 1.4rem;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-}
-
-.status-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border);
-  font-size: var(--step--1);
-}
-
-.status-row:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.status-row dt {
-  color: var(--text-faint);
-  margin: 0;
-}
-
-.status-row dd {
-  margin: 0;
-  font-weight: 600;
-  text-align: right;
 }
 
 @media (max-width: 900px) {
