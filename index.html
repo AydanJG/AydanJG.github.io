@@ -203,9 +203,9 @@
         <div class="featured-project-body">
           <div class="featured-project-details">
             <p class="featured-lead">
-              A retrieval-augmented assistant grounded in curated internal training material, which cites its
-              sources and refuses to answer rather than fabricate when grounding is insufficient. Delivered as a
-              demo-grade v2 proof of concept by a four-person intern team over roughly twelve weeks.
+              A retrieval-augmented assistant grounded in curated internal training material. It cites its sources,
+              and when grounding is weak it says so rather than filling the gap — the interesting engineering was
+              in making that judgement reliable. Built by a four-person intern team over roughly twelve weeks.
             </p>
 
             <div class="featured-tags">
@@ -213,6 +213,7 @@
               <span>FastAPI</span>
               <span>PostgreSQL</span>
               <span>pgvector</span>
+              <span>SQLAlchemy</span>
               <span>MinIO</span>
               <span>SSE</span>
               <span>RAG</span>
@@ -223,35 +224,36 @@
               <div class="featured-block">
                 <h3>What I built</h3>
                 <ul>
-                  <li>FastAPI service streaming responses over Server-Sent Events using delta frames and a done sentinel.</li>
-                  <li>A single wire contract abstracting two interchangeable LLM delivery paths behind one endpoint, so the frontend keeps one chat codepath.</li>
-                  <li>Self-hosted retrieval pipeline with configurable chunk storage — on-disk via MinIO or a vector-enabled Postgres store.</li>
-                  <li>User authentication with role-based permissions backed by PostgreSQL.</li>
+                  <li>FastAPI service streaming over Server-Sent Events behind a delivery-agnostic contract, so the frontend keeps one chat codepath whichever retrieval path is live.</li>
+                  <li>Hybrid retrieval blending dense embeddings with BM25, so rare domain acronyms get the literal-match lift vector search alone misses.</li>
+                  <li>Storage that routes by document size: small documents stay as diffable Markdown with embedding sidecars, oversized ones go to pgvector, and both are unioned at query time.</li>
+                  <li>Follow-up rewriting, so a question like &ldquo;what about for corporates?&rdquo; becomes a standalone query before retrieval runs.</li>
+                  <li>Auth with role-based permissions on Postgres, invite-token signup, and a guard preventing removal of the last admin.</li>
                 </ul>
               </div>
               <div class="featured-block">
                 <h3>Grounding &amp; governance</h3>
                 <ul>
-                  <li>Every answer scored for grounding with a combination of BM25 and cosine similarity.</li>
-                  <li>Responses classified as grounded, partially grounded, or ungrounded before being returned.</li>
-                  <li>Enterprise AI data-pipeline API integrated as the primary delivery path.</li>
-                  <li>All LLM access routed through a governed gateway with full governance headers.</li>
+                  <li>Three-way classification — grounded, marginal, or refused — before any answer returns. Marginal answers still cite, under a header that forbids filling gaps.</li>
+                  <li>Absolute sigmoid scaling on cosine plus a saturation cap on BM25, so thresholds stop drifting as the corpus grows.</li>
+                  <li>Retrieved passage text is structurally excluded from every export path. There is no flag to include it.</li>
+                  <li>All model traffic routed through a governed internal gateway with full governance headers.</li>
                 </ul>
               </div>
             </div>
 
             <div class="featured-metrics">
               <div class="featured-metric">
-                <p class="metric-value">Cites or refuses</p>
-                <p class="metric-label">No ungrounded answers returned as fact</p>
+                <p class="metric-value">Grounded, marginal, refuse</p>
+                <p class="metric-label">Three-way judgement, not a binary gate</p>
               </div>
               <div class="featured-metric">
-                <p class="metric-value">Two backends, one contract</p>
-                <p class="metric-label">Delivery path swappable without frontend changes</p>
+                <p class="metric-value">Corpus-size invariant</p>
+                <p class="metric-label">Absolute scaling replaced per-request normalisation</p>
               </div>
               <div class="featured-metric">
-                <p class="metric-value">4-person team</p>
-                <p class="metric-label">~12-week internship, v2 proof of concept</p>
+                <p class="metric-value">23 specs, 365 tests</p>
+                <p class="metric-label">4-person team, ~12 weeks</p>
               </div>
             </div>
 
@@ -262,23 +264,23 @@
               </a>
             </div>
             <p class="featured-note">
-              This is an internal SS&amp;C product, so no source, screenshots, or live demo are available — the
-              summary above is limited to architecture and approach.
+              This is an internal SS&amp;C product, so there's no source, screenshots, or live demo. The summary
+              above is limited to architecture and approach, with internal system and product names left out.
             </p>
           </div>
 
           <div class="featured-project-media">
             <div class="pipeline">
               <p class="pipeline-title">Retrieval pipeline</p>
-              <div class="pipeline-step"><span>1</span><span>Chunk internal docs</span></div>
+              <div class="pipeline-step"><span>1</span><span>Parse &amp; chunk</span></div>
               <div class="pipeline-arrow" aria-hidden="true">↓</div>
               <div class="pipeline-step"><span>2</span><span>Embed → vector store</span></div>
               <div class="pipeline-arrow" aria-hidden="true">↓</div>
-              <div class="pipeline-step"><span>3</span><span>Top-k retrieval</span></div>
+              <div class="pipeline-step"><span>3</span><span>Hybrid dense + BM25</span></div>
               <div class="pipeline-arrow" aria-hidden="true">↓</div>
-              <div class="pipeline-step"><span>4</span><span>Chat completion</span></div>
+              <div class="pipeline-step"><span>4</span><span>Absolute score scaling</span></div>
               <div class="pipeline-arrow" aria-hidden="true">↓</div>
-              <div class="pipeline-step"><span>5</span><span>BM25 + cosine scoring</span></div>
+              <div class="pipeline-step"><span>5</span><span>Grounded / marginal / refuse</span></div>
               <div class="pipeline-arrow" aria-hidden="true">↓</div>
               <div class="pipeline-step is-terminal"><span>✓</span><span>Cited answer or refusal</span></div>
             </div>
