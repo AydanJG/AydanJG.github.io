@@ -270,20 +270,50 @@
           </div>
 
           <div class="featured-project-media">
-            <div class="pipeline">
-              <p class="pipeline-title">Retrieval pipeline</p>
-              <div class="pipeline-step"><span>1</span><span>Parse &amp; chunk</span></div>
-              <div class="pipeline-arrow" aria-hidden="true">↓</div>
-              <div class="pipeline-step"><span>2</span><span>Embed → vector store</span></div>
-              <div class="pipeline-arrow" aria-hidden="true">↓</div>
-              <div class="pipeline-step"><span>3</span><span>Hybrid dense + BM25</span></div>
-              <div class="pipeline-arrow" aria-hidden="true">↓</div>
-              <div class="pipeline-step"><span>4</span><span>Absolute score scaling</span></div>
-              <div class="pipeline-arrow" aria-hidden="true">↓</div>
-              <div class="pipeline-step"><span>5</span><span>Grounded / marginal / refuse</span></div>
-              <div class="pipeline-arrow" aria-hidden="true">↓</div>
-              <div class="pipeline-step is-terminal"><span>✓</span><span>Cited answer or refusal</span></div>
-            </div>
+            <figure class="arch">
+              <figcaption class="arch-title">System architecture</figcaption>
+              <div class="arch-perimeter">
+                <p class="arch-perimeter-label">SS&amp;C-governed perimeter</p>
+
+                <p class="arch-tier-label">Client</p>
+                <div class="arch-node">
+                  <b>React SSE client</b>
+                  <span>One chat codepath</span>
+                </div>
+
+                <p class="arch-link" aria-hidden="true">↓ &nbsp;POST /chat/stream</p>
+
+                <p class="arch-tier-label">Service</p>
+                <div class="arch-node">
+                  <b>FastAPI</b>
+                  <span>Streaming · auth &amp; RBAC</span>
+                </div>
+                <div class="arch-node">
+                  <b>Broker</b>
+                  <span>Rewrite → retrieve → score → ground</span>
+                </div>
+
+                <p class="arch-link" aria-hidden="true">↓ &nbsp;top-k, one absolute axis</p>
+
+                <p class="arch-tier-label">Retrieval</p>
+                <div class="arch-node">
+                  <b>Hybrid ranker</b>
+                  <span>Dense cosine + BM25</span>
+                </div>
+                <div class="arch-node">
+                  <b>Stores</b>
+                  <span>Markdown · pgvector · object</span>
+                </div>
+
+                <p class="arch-link" aria-hidden="true">↓ &nbsp;+ governance headers</p>
+
+                <p class="arch-tier-label">Model access</p>
+                <div class="arch-node is-accent">
+                  <b>Governed LLM gateway</b>
+                  <span>Sole egress — passage text never leaves</span>
+                </div>
+              </div>
+            </figure>
             <div class="featured-callout">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
               Grounded answers only — it refuses rather than fabricates.
@@ -291,78 +321,6 @@
           </div>
         </div>
 
-        <figure class="arch">
-          <figcaption class="arch-title">System architecture</figcaption>
-          <div class="arch-perimeter">
-            <p class="arch-perimeter-label">Every hop stays inside the SS&amp;C-governed perimeter</p>
-
-            <div class="arch-tier">
-              <p class="arch-tier-label">Client</p>
-              <div class="arch-nodes">
-                <div class="arch-node">
-                  <b>React SSE client</b>
-                  <span>One chat codepath, no branching on backend</span>
-                </div>
-              </div>
-            </div>
-
-            <p class="arch-link" aria-hidden="true">↓ &nbsp;POST /chat/stream &nbsp;·&nbsp; delta frames until [DONE]</p>
-
-            <div class="arch-tier">
-              <p class="arch-tier-label">Service</p>
-              <div class="arch-nodes">
-                <div class="arch-node">
-                  <b>FastAPI</b>
-                  <span>Streaming endpoint, upload pipeline</span>
-                </div>
-                <div class="arch-node">
-                  <b>Auth &amp; RBAC</b>
-                  <span>Signed session cookie, Postgres-backed roles</span>
-                </div>
-                <div class="arch-node">
-                  <b>Broker</b>
-                  <span>Rewrite → retrieve → score → ground → assemble</span>
-                </div>
-              </div>
-            </div>
-
-            <p class="arch-link" aria-hidden="true">↓ &nbsp;top-k passages, scored on one absolute axis</p>
-
-            <div class="arch-tier">
-              <p class="arch-tier-label">Retrieval</p>
-              <div class="arch-nodes">
-                <div class="arch-node">
-                  <b>Hybrid ranker</b>
-                  <span>Dense cosine blended with BM25</span>
-                </div>
-                <div class="arch-node">
-                  <b>Markdown store</b>
-                  <span>Small docs, diffable, embedding sidecars</span>
-                </div>
-                <div class="arch-node">
-                  <b>pgvector store</b>
-                  <span>Oversized docs, unioned at query time</span>
-                </div>
-                <div class="arch-node">
-                  <b>Object storage</b>
-                  <span>Corpus files, S3-compatible</span>
-                </div>
-              </div>
-            </div>
-
-            <p class="arch-link" aria-hidden="true">↓ &nbsp;prompt + cited passages, governance headers attached</p>
-
-            <div class="arch-tier">
-              <p class="arch-tier-label">Model access</p>
-              <div class="arch-nodes">
-                <div class="arch-node is-accent">
-                  <b>Governed LLM gateway</b>
-                  <span>Sole egress for chat and embeddings — no third-party model calls, and passage text never leaves</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </figure>
       </article>
 
       <!-- Nitch -->

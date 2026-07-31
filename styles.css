@@ -1061,62 +1061,11 @@ textarea:focus-visible {
   height: 17px;
 }
 
-/* Architecture diagram — CSS-only pipeline visual */
-.pipeline {
-  display: grid;
-  gap: 0.5rem;
-  padding: 1.25rem;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-}
 
-.pipeline-title {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-faint);
-  margin: 0 0 0.35rem;
-}
 
-.pipeline-step {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 0.6rem 0.8rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  color: var(--text-muted);
-}
 
-.pipeline-step span:first-child {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  background: var(--accent-soft);
-  color: var(--accent);
-  font-weight: 700;
-  flex-shrink: 0;
-}
 
-.pipeline-arrow {
-  justify-self: center;
-  color: var(--text-faint);
-  line-height: 1;
-}
 
-.pipeline-step.is-terminal {
-  border-color: var(--accent);
-  background: var(--accent-soft);
-  color: var(--accent);
-  font-weight: 600;
-}
 
 @media (max-width: 900px) {
   .featured-project-body {
@@ -1320,74 +1269,63 @@ textarea:focus-visible {
 
 
 /* Architecture figure — HTML/CSS rather than an image so it stays legible at
-   any width, re-themes with the card, and reads properly to a screen reader. */
+   any width, re-themes with the card, and reads properly to a screen reader.
+   Sized for the card's narrow media column, so it stacks vertically. */
 .arch {
-  margin: 2.25rem 0 0;
-  position: relative;
+  margin: 0;
 }
 
 .arch-title {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-faint);
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.5rem;
 }
 
 .arch-perimeter {
   border: 1px dashed var(--border-strong);
   border-radius: var(--radius-md);
-  padding: 1.1rem;
+  padding: 0.85rem;
   display: grid;
-  gap: 0.55rem;
+  gap: 0.3rem;
 }
 
 .arch-perimeter-label {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.66rem;
   color: var(--accent);
-  margin: 0 0 0.35rem;
-}
-
-.arch-tier {
-  display: grid;
-  gap: 0.4rem;
+  margin: 0 0 0.15rem;
 }
 
 .arch-tier-label {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-faint);
-  margin: 0;
-}
-
-.arch-nodes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
-  gap: 0.5rem;
+  margin: 0.3rem 0 0;
 }
 
 .arch-node {
   border: 1px solid var(--border);
   background: var(--surface-2);
   border-radius: var(--radius-sm);
-  padding: 0.65rem 0.75rem;
+  padding: 0.48rem 0.6rem;
 }
 
 .arch-node b {
   display: block;
-  font-size: var(--step--1);
+  font-size: 0.82rem;
   font-weight: 600;
-  margin-bottom: 0.15rem;
+  line-height: 1.3;
 }
 
 .arch-node span {
   display: block;
-  font-size: 0.78rem;
-  line-height: 1.45;
+  font-size: 0.72rem;
+  line-height: 1.4;
   color: var(--text-faint);
 }
 
@@ -1402,16 +1340,10 @@ textarea:focus-visible {
 
 .arch-link {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.66rem;
   color: var(--text-faint);
   text-align: center;
-  margin: 0.15rem 0;
-}
-
-@media (max-width: 560px) {
-  .arch-nodes {
-    grid-template-columns: 1fr;
-  }
+  margin: 0.1rem 0;
 }
 
 /* #region Projects Grid */
