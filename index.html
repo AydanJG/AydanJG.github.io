@@ -1,328 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aydan Gerber | Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
-  </head>
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aydan Gerber | Software Engineer & Data Scientist</title>
+  <meta name="description" content="Aydan Gerber — Cornell University data science student. Software engineer at SS&C Technologies, building Nitch. Projects in ML, RAG systems, computer vision, and quantitative finance." />
+  <link rel="canonical" href="https://aydanjg.github.io/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Aydan Gerber | Software Engineer & Data Scientist" />
+  <meta property="og:description" content="Cornell Data Science. Software engineer at SS&C Technologies, building Nitch. ML, RAG systems, and quantitative finance." />
+  <meta property="og:image" content="https://aydanjg.github.io/images/memoji-laptop.png" />
+  <meta property="og:url" content="https://aydanjg.github.io/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Aydan Gerber | Software Engineer & Data Scientist" />
+  <meta name="twitter:description" content="Cornell Data Science. Software engineer at SS&C Technologies, building Nitch." />
+  <meta name="twitter:image" content="https://aydanjg.github.io/images/memoji-laptop.png" />
+
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#16161f" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/png" href="images/headshot.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Resolve the theme before first paint so there is no light-mode flash. -->
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) { /* storage blocked */ }
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = stored || (prefersDark ? 'dark' : 'light');
+    })();
+  </script>
+</head>
+
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
   <header id="top">
     <nav class="navbar">
-        <div class="nav-left">
-          <img src="images/headshot.png" alt="headshot" class="logo">
-        </div>
-      
-        <!-- Desktop nav links (always visible) -->
-        <div class="nav-center desktop">
-          <a href="#home" class="active">Home</a>
-          <a href="#featured-rekkie">Projects</a>
-          <a href="#contact">Contact</a>
-          <a href="Aydan_Gerber_Resume.pdf" target="_blank" rel="noopener">Resume</a>
-        </div>
-      
-        <button class="nav-toggle" aria-label="Toggle navigation">
-          &#9776;
-        </button>
-      
-        <div class="nav-right">
-            <a href="https://www.instagram.com/aydangerber" target="_blank" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://github.com/AydanJG" target="_blank" aria-label="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/aydan-gerber" target="_blank" aria-label="LinkedIn">
-              <i class="fab fa-linkedin"></i>
-            </a>
-          </div>
-          
-      </nav>
-      
-      <!-- Mobile dropdown nav -->
-      <div class="nav-center-mobile">
+      <div class="nav-left">
+        <img src="images/headshot.png" alt="Aydan Gerber" class="logo" width="42" height="42">
+        <span class="nav-name">Aydan Gerber</span>
+      </div>
+
+      <div class="nav-center desktop">
         <a href="#home" class="active">Home</a>
-        <a href="#featured-rekkie">Projects</a>
+        <a href="#focus">Focus</a>
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="Aydan_Gerber_Resume.pdf" target="_blank" rel="noopener" class="nav-resume">Resume</a>
+      </div>
+
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch color theme">
+          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <a href="https://github.com/AydanJG" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.755-1.333-1.755-1.089-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.303-5.466-1.332-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 3.003-.404c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .32.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/aydan-gerber" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/aydangerber" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.016 4.85.07 1.17.056 1.8.25 2.23.415.56.218.96.478 1.38.896.42.42.68.82.9 1.382.16.42.36 1.057.41 2.227.06 1.266.07 1.646.07 4.85s-.01 3.585-.07 4.85c-.06 1.17-.25 1.805-.42 2.227-.22.562-.48.96-.9 1.382-.42.42-.82.68-1.38.896-.42.164-1.06.36-2.23.413-1.27.057-1.65.07-4.86.07s-3.59-.015-4.86-.074c-1.17-.06-1.81-.256-2.23-.42-.57-.225-.96-.48-1.38-.9-.42-.42-.69-.825-.9-1.38-.16-.42-.36-1.065-.42-2.235-.04-1.26-.06-1.65-.06-4.845s.02-3.585.06-4.86c.06-1.17.26-1.815.42-2.235.21-.57.48-.96.9-1.38.42-.42.81-.69 1.38-.9.42-.165 1.05-.36 2.22-.42C8.42 2.175 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.015 7.05.072 5.78.132 4.9.333 4.14.63c-.79.306-1.46.717-2.13 1.384S.935 3.35.63 4.14C.333 4.905.13 5.775.07 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.26 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+      </div>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-nav">
+        &#9776;
+      </button>
+    </nav>
+
+    <div class="nav-center-mobile" id="mobile-nav">
+      <div>
+        <a href="#home" class="active">Home</a>
+        <a href="#focus">Focus</a>
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
         <a href="Aydan_Gerber_Resume.pdf" target="_blank" rel="noopener">Resume</a>
       </div>
+    </div>
   </header>
-  <main>
+
+  <main id="main">
+    <!-- #region Hero -->
     <section id="home" class="hero-section">
-        <div class="hero-content">
-          <h1>
-            Student and <span class="highlight">Developer.</span>
-          </h1>
-          <p>
-                As a <b>sophomore at Cornell University</b>, I am a dedicated student passionate about <b>computer science</b> and <b>data science</b>. My interests lie at the intersection of <b>technology</b> and <b>finance</b>, where I aim to develop <b>data-driven solutions</b> that create a positive impact.
-          </p>
-          <a href="#featured-rekkie" class="btn-primary">My Projects</a>
-        </div>
-        <div class="hero-illustration">
-          <img src="images/memoji-laptop.png" alt="Illustration of person on laptop" />
-        </div>
-      </section>
-      
-      <section class="skills-section">
-        <div class="skills-intro">
-          <h2>Skills & Focus Areas</h2>
-          <p>
-            Combining technical expertise with a passion for meaningful impact.
-          </p>
-        </div>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <h3>Data Science</h3>
-            <p>Machine learning, data analysis, and predictive modeling to extract insights and drive decisions.</p>
-          </div>
-          <div class="skill-card">
-            <h3>Software Development</h3>
-            <p>Designing and building scalable applications with clean, maintainable code.</p>
-          </div>
-          <div class="skill-card">
-            <h3>Finance & Business</h3>
-            <p>Understanding markets and integrating financial thinking into technical projects.</p>
-          </div>
-        </div>
-        <div class="skills-cta-wrapper">
-          <a href="Aydan_Gerber_Resume.pdf" class="btn-primary skills-cta">Learn More About Me</a>
-        </div>
-      </section>
+      <div class="hero-content">
+        <h1>Student and <span class="highlight">Developer.</span></h1>
 
-      <section id="featured-rekkie" class="featured-project-section">
-        <div class="featured-project rekkie">
-          <div class="featured-project-header">
-            <p class="featured-eyebrow">Featured Internship</p>
-            <h2>Rekkie AR Ski Goggles Slope and State Classification</h2>
-            <p class="featured-subtitle">ML‑driven ski activity classification (runs, lifts, stops) from GPX + GeoJSON</p>
+        <p class="hero-lead">
+          I'm a data science student at Cornell University. I'm drawn to both sides of building software:
+          the engineering that makes a system reliable, and the product thinking that makes it worth using.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#work" class="btn-primary">
+            View my work
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="Aydan_Gerber_Resume.pdf" target="_blank" rel="noopener" class="btn-ghost">
+            Resume
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="hero-illustration">
+        <img src="images/memoji-laptop.png" alt="" width="420" height="420" fetchpriority="high" />
+      </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region Focus / Bento -->
+    <section id="focus">
+      <div class="section-header reveal">
+        <h2>Areas of Expertise</h2>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-card bento-lead reveal">
+          <div class="bento-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a4 4 0 0 0-4 4v1a3 3 0 0 0-3 3v1a3 3 0 0 0 0 6v1a3 3 0 0 0 3 3 3 3 0 0 0 4 1 3 3 0 0 0 4-1 3 3 0 0 0 3-3v-1a3 3 0 0 0 0-6v-1a3 3 0 0 0-3-3V6a4 4 0 0 0-4-4z"/></svg>
           </div>
-          <div class="featured-project-body">
-            <div class="featured-project-details">
-              <p class="featured-lead">
-                An ML‑focused classification pipeline that models ski activity states from GPS tracks and resort geometry.
-                It fuses learned motion features with map‑matching to predict run, lift, and stop states, then outputs
-                clean labels, summaries, and visual timelines for analysis.
-              </p>
-              <div class="featured-tags">
-                <span>Python</span>
-                <span>GeoPandas</span>
-                <span>Shapely</span>
-                <span>HMM</span>
-                <span>GPX</span>
-                <span>GeoJSON</span>
+          <h3><a href="#work">LLM &amp; ML systems</a></h3>
+          <p>
+            Retrieval-augmented generation, grounding and hallucination control, streaming inference APIs,
+            and classical ML for forecasting and classification.
+          </p>
+          <div class="bento-tags">
+            <span>RAG</span>
+            <span>PyTorch</span>
+            <span>Embeddings</span>
+            <span>HMM</span>
+            <span>NLP</span>
+          </div>
+        </div>
+
+        <div class="bento-card reveal">
+          <div class="bento-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>
+          </div>
+          <h3><a href="#ssc">Backend engineering</a></h3>
+          <p>Python/FastAPI services, streaming APIs, Postgres, auth and role-based access, containerized deploys.</p>
+        </div>
+
+        <div class="bento-card reveal">
+          <div class="bento-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m7 15 4-4 3 3 5-6"/></svg>
+          </div>
+          <h3><a href="#millennium">Quantitative finance</a></h3>
+          <p>Load forecasting, signal extraction from alternative data, and turning model output into decisions.</p>
+        </div>
+
+        <div class="bento-card reveal">
+          <div class="bento-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20h20M5 20v-7M10.5 20V6M16 20v-10M21 20v-4"/></svg>
+          </div>
+          <h3><a href="#research">Data analysis</a></h3>
+          <p>LDA topic modeling across 5,000+ tweets on sustainability discourse, plus the cleaning, preprocessing, and visualization that turned raw scraped text into a usable corpus.</p>
+        </div>
+
+        <div class="bento-card bento-accent reveal">
+          <div class="bento-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <h3><a href="#nitch">Product thinking</a></h3>
+          <p>Nitch, my social app for ranking real-world experiences. Solo project, so the design and product calls are mine alongside the engineering. Currently in App Store review.</p>
+        </div>
+      </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region Featured Work -->
+    <section id="work" class="work-section">
+      <div class="section-header reveal">
+        <h2>Featured Work</h2>
+      </div>
+
+      <!-- SS&C -->
+      <article class="featured-project theme-ssc reveal" id="ssc">
+        <div class="featured-project-header">
+          <p class="eyebrow">Internship · Summer 2026</p>
+          <div class="featured-title-row">
+            <h2>SS&amp;C Technologies — LLM Learning Assistant</h2>
+            <span class="status-chip chip-live">Deployed internally</span>
+          </div>
+          <p class="featured-subtitle">
+            An internal, source-grounded assistant that answers fund-accounting and operations questions for
+            onboarding staff, built to cut new-hire ramp time and reduce interruptions to senior staff.
+          </p>
+        </div>
+
+        <div class="featured-project-body">
+          <div class="featured-project-details">
+            <p class="featured-lead">
+              A retrieval-augmented assistant grounded in curated internal training material. It cites its sources,
+              and when grounding is weak it says so rather than filling the gap. The interesting engineering was
+              in making that judgement reliable. Built by a four-person intern team over roughly twelve weeks.
+            </p>
+
+            <div class="featured-tags">
+              <span>Python</span>
+              <span>FastAPI</span>
+              <span>PostgreSQL</span>
+              <span>pgvector</span>
+              <span>SQLAlchemy</span>
+              <span>MinIO</span>
+              <span>SSE</span>
+              <span>RAG</span>
+              <span>BM25</span>
+            </div>
+
+            <div class="featured-columns">
+              <div class="featured-block">
+                <h3>What I built</h3>
+                <ul>
+                  <li>FastAPI service streaming over Server-Sent Events behind a delivery-agnostic contract, so the frontend keeps one chat codepath whichever retrieval path is live.</li>
+                  <li>Hybrid retrieval blending dense embeddings with BM25, so rare domain acronyms get the literal-match lift vector search alone misses.</li>
+                  <li>Storage that routes by document size: small documents stay as diffable Markdown with embedding sidecars, oversized ones go to pgvector, and both are unioned at query time.</li>
+                  <li>Follow-up rewriting, so a question like &ldquo;what about for corporates?&rdquo; becomes a standalone query before retrieval runs.</li>
+                  <li>Auth with role-based permissions on Postgres, invite-token signup, and a guard preventing removal of the last admin.</li>
+                </ul>
               </div>
-              <div class="featured-columns">
-                <div class="featured-block">
-                  <h3>Key features</h3>
-                  <ul>
-                    <li>HMM inference with Viterbi smoothing</li>
-                    <li>Map‑matching to ski runs and lifts</li>
-                    <li>Per‑run summaries + session stats</li>
-                  </ul>
-                </div>
-                <div class="featured-block">
-                  <h3>Why it matters</h3>
-                  <ul>
-                    <li>Reliable offline analysis for ski sessions</li>
-                    <li>Clean segmentation for analytics and coaching</li>
-                    <li>Aligned to resort geometry for accuracy</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="featured-actions">
-                <a class="btn-primary" href="https://rekkie.com/" target="_blank" rel="noopener">Explore Rekkie</a>
+              <div class="featured-block">
+                <h3>Grounding &amp; governance</h3>
+                <ul>
+                  <li>Three-way classification (grounded, marginal, or refused) before any answer returns. Marginal answers still cite, under a header that forbids filling gaps.</li>
+                  <li>Absolute sigmoid scaling on cosine plus a saturation cap on BM25, so thresholds stop drifting as the corpus grows.</li>
+                  <li>Retrieved passage text is structurally excluded from every export path. There is no flag to include it.</li>
+                  <li>All model traffic routed through a governed internal gateway with full governance headers.</li>
+                </ul>
               </div>
             </div>
-            <div class="featured-project-media">
-              <div class="rekkie-media-grid">
-                <div class="rekkie-media-item rekkie-phone">
-                  <img src="images/app_display_concept.png" alt="Rekkie app display concept" />
-                  <span class="concept-label">* Concept art</span>
+
+            <div class="featured-metrics">
+              <div class="featured-metric">
+                <p class="metric-value">Grounded, marginal, refuse</p>
+                <p class="metric-label">Three-way judgement, not a binary gate</p>
+              </div>
+              <div class="featured-metric">
+                <p class="metric-value">Corpus-size invariant</p>
+                <p class="metric-label">Absolute scaling replaced per-request normalisation</p>
+              </div>
+              <div class="featured-metric">
+                <p class="metric-value">23 specs, 365 tests</p>
+                <p class="metric-label">4-person team, ~12 weeks</p>
+              </div>
+            </div>
+
+            <div class="featured-actions">
+              <a class="btn-ghost" href="https://www.ssctech.com/" target="_blank" rel="noopener">
+                About SS&amp;C Technologies
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
+              </a>
+            </div>
+            <p class="featured-note">
+              This is an internal SS&amp;C product, so there's no source, screenshots, or live demo. The summary
+              above is limited to architecture and approach, with internal system and product names left out.
+            </p>
+          </div>
+
+          <div class="featured-project-media">
+            <figure class="arch">
+              <figcaption class="arch-title">System architecture</figcaption>
+              <div class="arch-perimeter">
+                <p class="arch-perimeter-label">SS&amp;C-governed perimeter</p>
+
+                <p class="arch-tier-label">Client</p>
+                <div class="arch-node">
+                  <b>React SSE client</b>
+                  <span>One chat codepath</span>
+                </div>
+
+                <p class="arch-link" aria-hidden="true">↓ &nbsp;POST /chat/stream</p>
+
+                <p class="arch-tier-label">Service</p>
+                <div class="arch-node">
+                  <b>FastAPI</b>
+                  <span>Streaming · auth &amp; RBAC</span>
+                </div>
+                <div class="arch-node">
+                  <b>Broker</b>
+                  <span>Rewrite → retrieve → score → ground</span>
+                </div>
+
+                <p class="arch-link" aria-hidden="true">↓ &nbsp;top-k, one absolute axis</p>
+
+                <p class="arch-tier-label">Retrieval</p>
+                <div class="arch-node">
+                  <b>Hybrid ranker</b>
+                  <span>Dense cosine + BM25</span>
+                </div>
+                <div class="arch-node">
+                  <b>Stores</b>
+                  <span>Markdown · pgvector · object</span>
+                </div>
+
+                <p class="arch-link" aria-hidden="true">↓ &nbsp;+ governance headers</p>
+
+                <p class="arch-tier-label">Model access</p>
+                <div class="arch-node is-accent">
+                  <b>Governed LLM gateway</b>
+                  <span>Sole egress. Passage text never leaves</span>
                 </div>
               </div>
-              <div class="featured-callout">
-                <i class="fa-solid fa-snowflake"></i>
-                Built for AR snow‑goggle session intelligence.
-              </div>
+            </figure>
+            <div class="featured-callout">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              Grounded answers only. It refuses rather than fabricates.
             </div>
           </div>
         </div>
-      </section>
 
-      <section id="featured" class="featured-project-section">
-        <div class="featured-project">
-          <div class="featured-project-header">
-            <p class="featured-eyebrow">Featured Project</p>
+      </article>
+
+      <!-- Nitch -->
+      <article class="featured-project theme-nitch reveal" id="nitch">
+        <div class="featured-project-header">
+          <p class="eyebrow">Personal product</p>
+          <div class="featured-title-row">
+            <h2>Nitch</h2>
+            <span class="status-chip chip-review">In App Store review</span>
+          </div>
+          <p class="featured-subtitle">
+            A social app for logging the places you go, rating them out of ten, and seeing what the people
+            you trust rated nearby.
+          </p>
+        </div>
+
+        <div class="featured-project-body">
+          <div class="featured-project-details">
+            <p class="featured-lead">
+              You log what you did: a place, a category, a rating out of ten, notes and photos. Those logs build
+              a taste profile scored per category, weighting how often you actually go alongside how highly you
+              rate it, so one enthusiastic night out doesn't outrank somewhere you keep returning to. Nitch reads
+              that profile two ways: what the people you trust rated well near you, and which categories you love
+              have gone quiet.
+            </p>
+
+            <div class="featured-tags">
+              <span>TypeScript</span>
+              <span>React Native</span>
+              <span>Expo</span>
+              <span>Supabase</span>
+              <span>PostgreSQL</span>
+              <span>Stripe</span>
+            </div>
+
+            <div class="featured-columns">
+              <div class="featured-block">
+                <h3>What I'm building</h3>
+                <ul>
+                  <li>Cross-platform mobile client in React Native and Expo, written in strict TypeScript.</li>
+                  <li>A per-category taste profile built from your own ratings, log-damped so how often you go counts as well as how highly you rate it.</li>
+                  <li>Suggestions driven by activity gaps and an ageing want-to list, so a prompt names something specific rather than nudging you to open the app.</li>
+                  <li>Keyset-paginated feed on a Supabase backend, scoped by row-level security to your own logs and accepted friends&rsquo;.</li>
+                </ul>
+              </div>
+              <div class="featured-block">
+                <h3>Where it stands</h3>
+                <ul>
+                  <li>Currently in Apple App Store review.</li>
+                  <li>Invite-only. Not yet publicly launched or downloadable.</li>
+                  <li>Private codebase, so there's no public repo to link.</li>
+                  <li>Actively in development ahead of a wider release.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="featured-actions">
+              <a class="btn-primary" href="https://nitch.site/" target="_blank" rel="noopener">
+                Visit nitch.site
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
+              </a>
+            </div>
+            <p class="featured-note">
+              Nitch is a private codebase, unlike the open-source projects below. Happy to walk through the
+              architecture on request.
+            </p>
+          </div>
+
+          <div class="featured-project-media">
+            <figure class="phone" id="nitchPhone">
+              <div class="phone-screen">
+                <img class="phone-shot is-active" src="images/nitch/01-feed.webp" width="600" height="1301" alt="Nitch feed showing logged experiences from friends" decoding="async" />
+                <img class="phone-shot" src="images/nitch/02-ai-pick.webp" width="600" height="1301" alt="A personalised suggestion in Nitch" loading="lazy" decoding="async" />
+                <img class="phone-shot" src="images/nitch/03-discover.webp" width="600" height="1301" alt="Nitch discover screen" loading="lazy" decoding="async" />
+                <img class="phone-shot" src="images/nitch/04-place.webp" width="600" height="1301" alt="A place detail page in Nitch" loading="lazy" decoding="async" />
+                <img class="phone-shot" src="images/nitch/05-map.webp" width="600" height="1301" alt="Nitch map view" loading="lazy" decoding="async" />
+                <img class="phone-shot" src="images/nitch/07-log.webp" width="600" height="1301" alt="Logging an experience in Nitch" loading="lazy" decoding="async" />
+                <img class="phone-shot" src="images/nitch/08-profile.webp" width="600" height="1301" alt="A Nitch user profile" loading="lazy" decoding="async" />
+                <img class="phone-shot" src="images/nitch/09-world-map.webp" width="600" height="1301" alt="Nitch world map of logged places" loading="lazy" decoding="async" />
+              </div>
+              <figcaption class="visually-hidden">Screens from the Nitch iOS app</figcaption>
+            </figure>
+
+            <div class="phone-dots" id="nitchDots" aria-label="Choose a screenshot">
+              <button type="button" class="phone-dot is-active" aria-label="Feed" aria-current="true"></button>
+              <button type="button" class="phone-dot" aria-label="Suggestion"></button>
+              <button type="button" class="phone-dot" aria-label="Discover"></button>
+              <button type="button" class="phone-dot" aria-label="Place"></button>
+              <button type="button" class="phone-dot" aria-label="Map"></button>
+              <button type="button" class="phone-dot" aria-label="Log"></button>
+              <button type="button" class="phone-dot" aria-label="Profile"></button>
+              <button type="button" class="phone-dot" aria-label="World map"></button>
+            </div>
+
+            <div class="featured-callout">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+              Not yet publicly available. Launching after review.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- LiveDance -->
+      <article class="featured-project theme-livedance reveal" id="livedance">
+        <div class="featured-project-header">
+          <p class="eyebrow">Cornell Data Science</p>
+          <div class="featured-title-row">
             <h2>LiveDance</h2>
-            <p class="featured-subtitle">
-              Computer vision-powered dance training with real-time pose feedback, alignment scoring, and movement coaching.
-            </p>
+            <span class="status-chip">Open source</span>
           </div>
-          <div class="featured-project-body">
-            <div class="featured-project-details">
-              <p class="featured-lead">
-                LiveDance tracks a dancer from a live camera feed, compares their pose to a reference performance, and delivers
-                corrective feedback on posture, timing, and alignment for faster skill progression.
-              </p>
-              <div class="featured-tags">
-                <span>Computer Vision</span>
-                <span>MoveNet + BlazePose</span>
-                <span>MediaPipe</span>
-                <span>React</span>
-                <span>Python</span>
+          <p class="featured-subtitle">
+            Computer-vision dance training with real-time pose feedback, alignment scoring, and movement coaching.
+          </p>
+        </div>
+
+        <div class="featured-project-body">
+          <div class="featured-project-details">
+            <p class="featured-lead">
+              LiveDance tracks a dancer from a live camera feed, compares their pose against a reference
+              performance, and delivers corrective feedback on posture, timing, and alignment. I worked primarily
+              on the pose-extraction pipeline powering the real-time feedback loop.
+            </p>
+
+            <div class="featured-tags">
+              <span>Computer Vision</span>
+              <span>MoveNet</span>
+              <span>BlazePose</span>
+              <span>MediaPipe</span>
+              <span>React</span>
+              <span>Python</span>
+            </div>
+
+            <div class="featured-columns">
+              <div class="featured-block">
+                <h3>What it does</h3>
+                <ul>
+                  <li>Captures pose landmarks from a live camera feed.</li>
+                  <li>Aligns movement sequences against a reference routine.</li>
+                  <li>Highlights corrective cues for posture and timing.</li>
+                </ul>
               </div>
-              <div class="featured-columns">
-                <div class="featured-block">
-                  <h3>What it does</h3>
-                  <ul>
-                    <li>Captures pose landmarks from a live camera feed.</li>
-                    <li>Aligns movement sequences to a reference routine.</li>
-                    <li>Highlights corrective cues for posture and timing.</li>
-                  </ul>
-                </div>
-                <div class="featured-block">
-                  <h3>Architecture</h3>
-                  <ul>
-                    <li><b>Frontend (React):</b> camera capture, UI, and visual overlays.</li>
-                    <li><b>Backend (Python):</b> MediaPipe processing and ML inference.</li>
-                    <li><b>Communication:</b> REST API over localhost.</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="featured-metrics">
-                <div class="featured-metric">
-                  <p class="metric-value">Stable skeletal rigging</p>
-                  <p class="metric-label">Smoothed pose estimation</p>
-                </div>
-                <div class="featured-metric">
-                  <p class="metric-value">Real-time feedback</p>
-                  <p class="metric-label">Posture, timing, alignment</p>
-                </div>
-                <div class="featured-metric">
-                  <p class="metric-value">MVC architecture</p>
-                  <p class="metric-label">Clear separation of concerns</p>
-                </div>
-              </div>
-              <p class="featured-resume">
-                Developed LiveDance, integrating MoveNet and BlazePose with stable skeletal rigging to deliver corrective
-                feedback that improved user learning beyond existing scoring tools. Primarily worked on the pose extraction
-                pipeline powering the real-time feedback loop.
-              </p>
-              <div class="featured-actions">
-                <a class="btn-primary" href="https://github.com/CornellDataScience/LiveDance/tree/main" target="_blank" rel="noopener">GitHub Repo</a>
+              <div class="featured-block">
+                <h3>Architecture</h3>
+                <ul>
+                  <li><b>Frontend (React):</b> camera capture, UI, and visual overlays.</li>
+                  <li><b>Backend (Python):</b> MediaPipe processing and ML inference.</li>
+                  <li><b>Communication:</b> REST API over localhost.</li>
+                </ul>
               </div>
             </div>
-            <div class="featured-project-media">
-              <div class="featured-video-frame">
-                <iframe
-                  src="https://www.youtube.com/embed/ma9HdEEH_8c"
-                  title="LiveDance demo video"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  loading="lazy"></iframe>
+
+            <div class="featured-metrics">
+              <div class="featured-metric">
+                <p class="metric-value">Stable skeletal rigging</p>
+                <p class="metric-label">Smoothed pose estimation</p>
               </div>
-              <div class="featured-callout">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                Real-time corrective feedback while you dance.
+              <div class="featured-metric">
+                <p class="metric-value">Real-time feedback</p>
+                <p class="metric-label">Posture, timing, alignment</p>
               </div>
+              <div class="featured-metric">
+                <p class="metric-value">MVC architecture</p>
+                <p class="metric-label">Clear separation of concerns</p>
+              </div>
+            </div>
+
+            <div class="featured-actions">
+              <a class="btn-ghost" href="https://github.com/CornellDataScience/LiveDance/tree/main" target="_blank" rel="noopener">
+                GitHub repo
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.755-1.333-1.755-1.089-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.303-5.466-1.332-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 3.003-.404c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .32.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="featured-project-media">
+            <div class="featured-video-frame">
+              <iframe
+                src="https://www.youtube.com/embed/ma9HdEEH_8c"
+                title="LiveDance demo video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin"
+                loading="lazy"></iframe>
+            </div>
+            <div class="featured-callout">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.4 4.6L18 8l-4.6 1.4L12 14l-1.4-4.6L6 8l4.6-1.4L12 2z"/><path d="M19 13l.8 2.6L22 16l-2.2.8L19 19l-.8-2.2L16 16l2.2-.4L19 13z"/><path d="M5 14l.6 2 2 .6-2 .6L5 19l-.6-1.8L2 16.6l2.4-.6L5 14z"/></svg>
+              Real-time corrective feedback while you dance.
             </div>
           </div>
         </div>
-      </section>
+      </article>
+    </section>
+    <!-- #endregion -->
 
-      <section id="projects" class="projects-section">
-        <div class="section-header">
-          <h2>More Projects</h2>
-          <p>Focused on data, engineering, and sustainability with real‑world impact.</p>
+    <!-- #region Projects Grid -->
+    <section id="projects">
+      <div class="section-header reveal">
+        <p class="eyebrow">Archive</p>
+        <h2>More projects</h2>
+        <p>Research, machine learning, and quantitative work across sustainability, energy markets, and alternative data.</p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card spotlight reveal">
+          <p class="project-meta">Internship · Rekkie</p>
+          <h3>AR Ski Goggle State Classification</h3>
+          <p>
+            ML classification pipeline modeling ski activity states from GPS tracks and resort geometry. Fuses
+            learned motion features with map-matching to predict run, lift, and stop states, then outputs labels,
+            summaries, and visual timelines.
+          </p>
+          <div class="project-tags">
+            <span>Python</span>
+            <span>GeoPandas</span>
+            <span>Shapely</span>
+            <span>HMM</span>
+            <span>GPX</span>
+          </div>
+          <a href="https://rekkie.com/" target="_blank" rel="noopener" class="project-link">
+            Explore Rekkie
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <article class="project-card spotlight reveal" id="research">
+          <p class="project-meta">Peer-reviewed research</p>
+          <h3>Twitter Sustainability Analysis</h3>
+          <p>
+            Content analysis of Twitter data uncovering trends in environmental conversation using NLP and topic
+            modeling techniques.
+          </p>
+          <p class="project-highlight">Published by Cambridge University Press</p>
+          <div class="project-tags">
+            <span>NLP</span>
+            <span>Topic Modeling</span>
+            <span>Python</span>
+          </div>
+          <a target="_blank" rel="noopener" href="https://www.cambridge.org/core/journals/environmental-data-science/article/content-analysis-analyzing-topics-of-conversation-under-the-sustainability-hashtag-on-twitter/4AF7FAA1DFAC4FDE45F297017C06B731" class="project-link">
+            Read the paper
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <article class="project-card spotlight reveal" id="millennium">
+          <p class="project-meta">Hedge-fund sponsored</p>
+          <h3>Millennium Load Forecasting</h3>
+          <p>
+            Electricity load forecasting project sponsored by Millennium, building models to inform trading
+            strategy and risk decisions with more reliable demand signals.
+          </p>
+          <div class="project-tags">
+            <span>Time Series</span>
+            <span>Forecasting</span>
+            <span>Python</span>
+          </div>
+          <a target="_blank" rel="noopener" href="https://www.mlp.com/" class="project-link">
+            Explore Millennium
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <article class="project-card spotlight reveal">
+          <p class="project-meta">Alternative data</p>
+          <h3>BullStreetBets ETF Recommender</h3>
+          <p>
+            Python application identifying surges in public interest across any topic and recommending relevant
+            ETFs aligned with those trends.
+          </p>
+          <div class="project-tags">
+            <span>Python</span>
+            <span>Reddit API</span>
+            <span>Sentiment</span>
+          </div>
+          <a target="_blank" rel="noopener" href="https://github.com/AydanJG/reddit-etf-analysis" class="project-link">
+            View on GitHub
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <article class="project-card spotlight reveal">
+          <p class="project-meta">Open dataset</p>
+          <h3>Twitter Sustainability Dataset</h3>
+          <p>
+            Published dataset of 5,000+ tweets using #sustainability, with metadata and preprocessing prepared for
+            topic modeling and sentiment analysis.
+          </p>
+          <div class="project-tags">
+            <span>Dataset</span>
+            <span>Preprocessing</span>
+            <span>Open Data</span>
+          </div>
+          <a href="https://github.com/AydanJG/A-Content-Analysis-Analyzing-Topics-of-Conversation-under-the-Sustainability-Hashtag-on-Twitter-" target="_blank" rel="noopener" class="project-link">
+            View on GitHub
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+      </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region Contact -->
+    <section id="contact">
+      <div class="contact-hero reveal">
+        <p class="eyebrow">Contact</p>
+        <h2>Let's connect</h2>
+        <p>If you'd like to collaborate, have questions, or just want to say hello, feel free to reach out.</p>
+      </div>
+
+      <div class="contact-container reveal">
+        <div class="contact-info">
+          <h3>Contact details</h3>
+          <dl class="contact-list">
+            <div>
+              <dt>Email</dt>
+              <dd><a target="_blank" rel="noopener" href="https://mail.google.com/mail/?view=cm&to=ajg359@cornell.edu">ajg359@cornell.edu</a></dd>
+            </div>
+            <div>
+              <dt>LinkedIn</dt>
+              <dd><a href="https://www.linkedin.com/in/aydan-gerber" target="_blank" rel="noopener">linkedin.com/in/aydan-gerber</a></dd>
+            </div>
+            <div>
+              <dt>GitHub</dt>
+              <dd><a href="https://github.com/AydanJG" target="_blank" rel="noopener">github.com/AydanJG</a></dd>
+            </div>
+            <div>
+              <dt>Location</dt>
+              <dd>Ithaca, NY</dd>
+            </div>
+          </dl>
         </div>
-        <div class="projects-grid">
-          <div class="project-card">
-            <h3>Twitter Sustainability Analysis</h3>
-            <p>
-              Conducted a comprehensive content analysis of Twitter data to uncover trends in environmental conversations using NLP techniques.
-            </p>
-            <p><b>Published by Cambridge University Press</b></p>
-            <a target="_blank" rel="noopener" href="https://www.cambridge.org/core/journals/environmental-data-science/article/content-analysis-analyzing-topics-of-conversation-under-the-sustainability-hashtag-on-twitter/4AF7FAA1DFAC4FDE45F297017C06B731?utm_campaign=shareaholic&utm_medium=copy_link&utm_source=bookmark" class="project-link">View Details</a>
-          </div>
-          <div class="project-card">
-            <h3>Millennium Load Forecasting</h3>
-            <p>
-              Partnered on a hedge‑fund‑sponsored electricity load forecasting project for Millennium, building models to
-              inform trading strategy and risk decisions with more reliable demand signals.
-            </p>
-            <a target="_blank" rel="noopener" href="https://www.mlp.com/" class="project-link">Explore Millennium</a>
-          </div>
-          <div class="project-card">
-            <h3>BullStreetBets ETF Recomender</h3>
-            <p>
-              Python‑based application to identify surges in public interest across any topic and recommend relevant ETFs aligned with those trends.
-            </p>
-            <a target="_blank" rel="noopener" href="https://github.com/AydanJG/reddit-etf-analysis" class="project-link">View Details</a>
-          </div>
-          <div class="project-card">
-            <h3>Twitter Sustainability Dataset</h3>
-            <p>
-              Published dataset of 5,000+ tweets using #sustainability, with metadata and preprocessing for topic modeling and sentiment analysis.
-            </p>
-            <a href="https://github.com/AydanJG/A-Content-Analysis-Analyzing-Topics-of-Conversation-under-the-Sustainability-Hashtag-on-Twitter-" target="_blank" rel="noopener" class="project-link">View Details</a>
-          </div>
+
+        <div class="contact-form">
+          <form id="contactForm" novalidate>
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" autocomplete="name" required>
+
+            <label for="email">Your email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Write your message here" required></textarea>
+
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+
+            <button type="submit" class="btn-primary" id="sendEmailButton">
+              Send via Gmail
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </form>
         </div>
-      </section>
+      </div>
+    </section>
+    <!-- #endregion -->
+  </main>
 
-      <section id="contact" class="contact-section">
-        <div class="contact-hero">
-          <h2>Let’s Connect</h2>
-          <p>If you’d like to collaborate, have questions, or just want to say hello, feel free to reach out.</p>
-        </div>
-
-        <div class="contact-container">
-          <div class="contact-info">
-            <h3>Contact Details</h3>
-            <p><b>Email:</b> <a target="_blank" rel="noopener" href="https://mail.google.com/mail/?view=cm&to=ajg359@cornell.edu">ajg359@cornell.edu</a></p>
-            <p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/aydan-gerber" target="_blank" rel="noopener">linkedin.com/in/aydan-gerber</a></p>
-            <p><b>Location:</b> Ithaca, NY</p>
-          </div>
-
-          <div class="contact-form">
-            <form>
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" placeholder="Enter your name">
-
-              <label for="email">Your Email</label>
-              <input type="email" id="email" name="email" placeholder="Enter your email">
-
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" placeholder="Write your message here"></textarea>
-
-              <button type="button" class="btn-primary" id="sendEmailButton">Send Message via Gmail</button>
-            </form>
-          </div>
-        </div>
-      </section>
-      
-      
-
-      <footer class="site-footer">
-        <div class="footer-top">
-          <p class="footer-text">Let's get in touch!</p>
-          <div class="footer-links">
-            <a href="https://mail.google.com/mail/?view=cm&to=ajg359@cornell.edu" target="_blank" aria-label="Email">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Email Icon" class="footer-icon">
-            </a>
-            <a href="https://www.linkedin.com/in/aydan-gerber" target="_blank" aria-label="LinkedIn">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn Icon" class="footer-icon">
-            </a>
-          </div>
-        </div>
-        <p>&copy; 2025 Aydan Gerber</p>
-      </footer>
-      
-      
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-text">Let's get in touch.</p>
+        <p class="footer-note">&copy; <span id="copyrightYear">2026</span> Aydan Gerber · Built from scratch, no framework.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://mail.google.com/mail/?view=cm&to=ajg359@cornell.edu" target="_blank" rel="noopener" aria-label="Email">
+          <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/aydan-gerber" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg class="footer-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://github.com/AydanJG" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg class="footer-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.755-1.333-1.755-1.089-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.303-5.466-1.332-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 3.003-.404c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .32.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>

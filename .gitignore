@@ -1,2 +1,6 @@
 .DS_Store
 images/.DS_Store
+
+# Source app screenshots (8.4MB of 1290x2796 PNGs). The optimised WebP
+# derivatives in images/nitch/ are what the site actually ships.
+nitch-screenshots/
