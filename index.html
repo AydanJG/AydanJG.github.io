@@ -290,6 +290,79 @@
             </div>
           </div>
         </div>
+
+        <figure class="arch">
+          <figcaption class="arch-title">System architecture</figcaption>
+          <div class="arch-perimeter">
+            <p class="arch-perimeter-label">Every hop stays inside the SS&amp;C-governed perimeter</p>
+
+            <div class="arch-tier">
+              <p class="arch-tier-label">Client</p>
+              <div class="arch-nodes">
+                <div class="arch-node">
+                  <b>React SSE client</b>
+                  <span>One chat codepath, no branching on backend</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="arch-link" aria-hidden="true">↓ &nbsp;POST /chat/stream &nbsp;·&nbsp; delta frames until [DONE]</p>
+
+            <div class="arch-tier">
+              <p class="arch-tier-label">Service</p>
+              <div class="arch-nodes">
+                <div class="arch-node">
+                  <b>FastAPI</b>
+                  <span>Streaming endpoint, upload pipeline</span>
+                </div>
+                <div class="arch-node">
+                  <b>Auth &amp; RBAC</b>
+                  <span>Signed session cookie, Postgres-backed roles</span>
+                </div>
+                <div class="arch-node">
+                  <b>Broker</b>
+                  <span>Rewrite → retrieve → score → ground → assemble</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="arch-link" aria-hidden="true">↓ &nbsp;top-k passages, scored on one absolute axis</p>
+
+            <div class="arch-tier">
+              <p class="arch-tier-label">Retrieval</p>
+              <div class="arch-nodes">
+                <div class="arch-node">
+                  <b>Hybrid ranker</b>
+                  <span>Dense cosine blended with BM25</span>
+                </div>
+                <div class="arch-node">
+                  <b>Markdown store</b>
+                  <span>Small docs, diffable, embedding sidecars</span>
+                </div>
+                <div class="arch-node">
+                  <b>pgvector store</b>
+                  <span>Oversized docs, unioned at query time</span>
+                </div>
+                <div class="arch-node">
+                  <b>Object storage</b>
+                  <span>Corpus files, S3-compatible</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="arch-link" aria-hidden="true">↓ &nbsp;prompt + cited passages, governance headers attached</p>
+
+            <div class="arch-tier">
+              <p class="arch-tier-label">Model access</p>
+              <div class="arch-nodes">
+                <div class="arch-node is-accent">
+                  <b>Governed LLM gateway</b>
+                  <span>Sole egress for chat and embeddings — no third-party model calls, and passage text never leaves</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </figure>
       </article>
 
       <!-- Nitch -->

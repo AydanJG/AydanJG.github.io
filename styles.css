@@ -1319,6 +1319,101 @@ textarea:focus-visible {
 }
 
 
+/* Architecture figure — HTML/CSS rather than an image so it stays legible at
+   any width, re-themes with the card, and reads properly to a screen reader. */
+.arch {
+  margin: 2.25rem 0 0;
+  position: relative;
+}
+
+.arch-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 0 0 0.75rem;
+}
+
+.arch-perimeter {
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.arch-perimeter-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  margin: 0 0 0.35rem;
+}
+
+.arch-tier {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.arch-tier-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 0;
+}
+
+.arch-nodes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+  gap: 0.5rem;
+}
+
+.arch-node {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.75rem;
+}
+
+.arch-node b {
+  display: block;
+  font-size: var(--step--1);
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.arch-node span {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-faint);
+}
+
+.arch-node.is-accent {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.arch-node.is-accent b {
+  color: var(--accent);
+}
+
+.arch-link {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  text-align: center;
+  margin: 0.15rem 0;
+}
+
+@media (max-width: 560px) {
+  .arch-nodes {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* #region Projects Grid */
 .projects-grid {
   display: grid;
